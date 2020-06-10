@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS UserFeatureSwitch CASCADE;
+DROP TABLE IF EXISTS User CASCADE;
+DROP TABLE IF EXISTS Feature CASCADE;
+
+CREATE TABLE Feature
+(
+   f_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+   name varchar(1000) NOT NULL UNIQUE
+);
+
+CREATE TABLE User
+(
+   u_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+   email varchar(1000) NOT NULL UNIQUE
+);
+
+CREATE TABLE UserFeatureSwitch (
+    u_id INTEGER NOT NULL,
+    f_id INTEGER NOT NULL,
+    enabled BOOLEAN NOT NULL,
+    FOREIGN KEY(f_id) REFERENCES Feature(f_id),
+    FOREIGN KEY(u_id) REFERENCES User(u_id),
+    PRIMARY KEY(u_id, f_id)
+);

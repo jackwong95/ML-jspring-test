@@ -1,0 +1,5 @@
+com/moneylion/features/dao/UserFeatureSwitchDAOUnitTest.class
+com/moneylion/features/dao/FeatureDAOUnitTest.class
+com/moneylion/features/repository/FeatureSwitchRepositoryUnitTest.class
+com/moneylion/features/dao/UserDAOUnitTest.class
+com/moneylion/features/FeaturesApplicationTests.class
