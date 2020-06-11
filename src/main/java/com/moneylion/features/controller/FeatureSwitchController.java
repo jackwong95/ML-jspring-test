@@ -2,6 +2,7 @@ package com.moneylion.features.controller;
 
 import com.moneylion.features.exception.InvalidFeatureException;
 import com.moneylion.features.exception.InvalidUserException;
+import com.moneylion.features.exception.InvalidUserFeatureSwitchException;
 import com.moneylion.features.service.FeatureSwitchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,7 +47,7 @@ public class FeatureSwitchController {
 
             featureSwitchService.upsertUserAccessFeature(email, featureName, isEnabled);
 
-        } catch (ClassCastException | InvalidUserException | InvalidFeatureException e) {
+        } catch (ClassCastException | InvalidUserException | InvalidFeatureException | InvalidUserFeatureSwitchException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
         }
