@@ -8,8 +8,8 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-```
 ## Running unit tests
+```
 ```$xslt
 mvn test
 ```
