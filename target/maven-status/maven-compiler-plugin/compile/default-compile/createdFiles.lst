@@ -2,6 +2,7 @@ com/moneylion/features/service/FeatureSwitchServiceImpl.class
 com/moneylion/features/dao/UserFeatureSwitchDAOImpl.class
 com/moneylion/features/dao/UserDAOImpl.class
 com/moneylion/features/model/UserFeatureSwitch.class
+com/moneylion/features/controller/FeatureSwitchController.class
 com/moneylion/features/exception/InvalidFeatureException.class
 com/moneylion/features/FeaturesApplication.class
 com/moneylion/features/model/User.class

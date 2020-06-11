@@ -67,11 +67,11 @@ public class UserFeatureSwitchDAOImpl implements UserFeatureSwitchDAO {
     @Override
     public UserFeatureSwitch findSwitchById(UserFeatureEmbeddedId embeddedId) {
         String sql = "SELECT ufs.u_id, ufs.f_id, ufs.enabled FROM UserFeatureSwitch ufs WHERE ufs.u_id = ? AND ufs.f_id = ?";
-        Map<String,Object> result = template.queryForMap(sql, embeddedId.getUserId(), embeddedId.getFeatureId());
+        Map<String, Object> result = template.queryForMap(sql, embeddedId.getUserId(), embeddedId.getFeatureId());
 
         UserFeatureSwitch userFeatureSwitch = new UserFeatureSwitch();
-        userFeatureSwitch.setId(new UserFeatureEmbeddedId((int)result.get("U_ID"), (int)result.get("F_ID")));
-        userFeatureSwitch.setEnabled((boolean)result.get("ENABLED"));
+        userFeatureSwitch.setId(new UserFeatureEmbeddedId((int) result.get("U_ID"), (int) result.get("F_ID")));
+        userFeatureSwitch.setEnabled((boolean) result.get("ENABLED"));
 
         return userFeatureSwitch;
     }

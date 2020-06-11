@@ -16,7 +16,7 @@ public class FeatureSwitchServiceImpl implements FeatureSwitchService {
     }
 
     @Override
-    public void upsertFeature(String email, String featureName, Boolean enabled) {
-        featureSwitchRepository.upsertFeature(email, featureName, enabled);
+    public void upsertUserAccessFeature(String email, String featureName, Boolean enabled) {
+        featureSwitchRepository.upsertUserAccessFeature(email, featureName, enabled);
     }
 }

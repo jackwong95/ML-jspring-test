@@ -16,21 +16,22 @@ public class Feature implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "f_id", unique = true)
     private Integer id;
 
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    public Feature () {}
+    public Feature() {
+    }
 
-    public Feature (Integer id, String name) {
+    public Feature(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Feature (String name){
+    public Feature(String name) {
         this.name = name;
     }
 
@@ -56,7 +57,7 @@ public class Feature implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Feature feature = (Feature) o;
         return Objects.equals(id, feature.id) &&
-               Objects.equals(name, feature.name);
+                Objects.equals(name, feature.name);
     }
 
     @Override

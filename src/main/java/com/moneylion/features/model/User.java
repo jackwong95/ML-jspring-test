@@ -15,19 +15,20 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public User () {}
+    public User() {
+    }
 
-    public User (Integer id, String email){
+    public User(Integer id, String email) {
         this.id = id;
         this.email = email;
     }
 
-    public User (String email){
+    public User(String email) {
         this.email = email;
     }
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "u_id", unique = true)
     private Integer id;
 

@@ -6,7 +6,7 @@ package com.moneylion.features.repository;
 public interface FeatureSwitchRepository {
 
     // returns true if user canAccess to feature
-    boolean canUserAccessFeature (String email, String featureName);
+    boolean canUserAccessFeature(String email, String featureName);
 
-    void upsertFeature (String email, String featureName, Boolean enabled);
+    void upsertUserAccessFeature(String email, String featureName, Boolean enabled);
 }

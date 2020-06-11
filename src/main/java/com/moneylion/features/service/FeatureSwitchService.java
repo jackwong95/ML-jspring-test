@@ -5,8 +5,8 @@ package com.moneylion.features.service;
 public interface FeatureSwitchService {
 
     // returns true if user canAccess to feature
-    boolean canUserAccessFeature (String email, String featureName);
+    boolean canUserAccessFeature(String email, String featureName);
 
     // perform an update or insert based on given params
-    void upsertFeature (String email, String featureName, Boolean enabled);
+    void upsertUserAccessFeature(String email, String featureName, Boolean enabled);
 }

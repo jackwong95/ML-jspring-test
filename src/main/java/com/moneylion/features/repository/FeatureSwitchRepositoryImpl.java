@@ -26,15 +26,23 @@ public class FeatureSwitchRepositoryImpl implements FeatureSwitchRepository {
     @Autowired
     private UserFeatureSwitchDAO userFeatureSwitchDAO;
 
-    public void setFeatureDAO (FeatureDAO featureDAO) { this.featureDAO = featureDAO; }
-    public void setUserDAO (UserDAO userDAO) { this.userDAO = userDAO; }
-    public void setUserFeatureSwitchDAO (UserFeatureSwitchDAO userFeatureSwitchDAO) { this.userFeatureSwitchDAO = userFeatureSwitchDAO; }
-    
+    public void setFeatureDAO(FeatureDAO featureDAO) {
+        this.featureDAO = featureDAO;
+    }
+
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
+    public void setUserFeatureSwitchDAO(UserFeatureSwitchDAO userFeatureSwitchDAO) {
+        this.userFeatureSwitchDAO = userFeatureSwitchDAO;
+    }
+
     @Override
     public boolean canUserAccessFeature(String email, String featureName) {
         User user = null;
         Feature feature = null;
-        // TODO: Exception handling here
+
         try {
             user = userDAO.findByEmail(email);
             feature = featureDAO.findByName(featureName);
@@ -48,14 +56,14 @@ public class FeatureSwitchRepositoryImpl implements FeatureSwitchRepository {
     }
 
     @Transactional
-    public void upsertFeature(String email, String featureName, Boolean enabled) {
+    public void upsertUserAccessFeature(String email, String featureName, Boolean enabled) {
         // TODO: Exception handling here
         User user = upsertUser(email);
         Feature feature = upsertFeature(featureName);
-        upsertUserFeatureSwitch (user, feature, enabled);
+        upsertUserFeatureSwitch(user, feature, enabled);
     }
 
-    private UserFeatureSwitch upsertUserFeatureSwitch (User user, Feature feature, Boolean enabled) {
+    private UserFeatureSwitch upsertUserFeatureSwitch(User user, Feature feature, Boolean enabled) {
         UserFeatureSwitch userFeatureSwitch;
         UserFeatureEmbeddedId embeddedId = new UserFeatureEmbeddedId(user.getId(), feature.getId());
 
@@ -67,7 +75,7 @@ public class FeatureSwitchRepositoryImpl implements FeatureSwitchRepository {
             userFeatureSwitch.setEnabled(enabled);
             userFeatureSwitchDAO.updateUserFeatureSwitch(userFeatureSwitch);
 
-        // userFeatureSwitch doesn't exist, then create a user feature switch and insert into database
+            // userFeatureSwitch doesn't exist, then create a user feature switch and insert into database
         } catch (EmptyResultDataAccessException e) {
             userFeatureSwitch = new UserFeatureSwitch(embeddedId, enabled);
             userFeatureSwitchDAO.insertUserFeatureSwitch(userFeatureSwitch);
@@ -76,12 +84,12 @@ public class FeatureSwitchRepositoryImpl implements FeatureSwitchRepository {
         return userFeatureSwitchDAO.findSwitchById(embeddedId);
     }
 
-    private User upsertUser (String email) {
+    private User upsertUser(String email) {
 
         // try to return user
         try {
             return userDAO.findByEmail(email);
-        // user does not exist, create a new user instance
+            // user does not exist, create a new user instance
         } catch (EmptyResultDataAccessException e) {
             userDAO.insertUser(new User(email));
         }
@@ -89,12 +97,12 @@ public class FeatureSwitchRepositoryImpl implements FeatureSwitchRepository {
         return userDAO.findByEmail(email);
     }
 
-    private Feature upsertFeature (String featureName) {
+    private Feature upsertFeature(String featureName) {
 
         // try to return feature
         try {
             return featureDAO.findByName(featureName);
-        // feature does not exist, create a new feature instance
+            // feature does not exist, create a new feature instance
         } catch (EmptyResultDataAccessException e) {
             featureDAO.insertFeature(new Feature(featureName));
         }

@@ -14,14 +14,18 @@ public interface UserFeatureSwitchDAO {
     List<UserFeatureSwitch> findAll();
 
     List<UserFeatureSwitch> findSwitchByFeatureName(String featureName);
+
     List<UserFeatureSwitch> findSwitchByEmailName(String email);
 
     UserFeatureSwitch findSwitchById(UserFeatureEmbeddedId embeddedId);
 
     void insertUserFeatureSwitch(UserFeatureSwitch userFeatureSwitch) throws DataIntegrityViolationException;
+
     void updateUserFeatureSwitch(UserFeatureSwitch userFeatureSwitch) throws InvalidUserFeatureSwitchException;
+
     void deleteUserFeatureSwitch(UserFeatureSwitch userFeatureSwitch) throws InvalidUserFeatureSwitchException;
 
     void setTemplate(JdbcTemplate template);
+
     void setDataSource(DataSource dataSource);
 }

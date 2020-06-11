@@ -10,7 +10,8 @@ import java.util.Objects;
 @Embeddable
 public class UserFeatureEmbeddedId implements Serializable {
 
-    public UserFeatureEmbeddedId() {}
+    public UserFeatureEmbeddedId() {
+    }
 
     public UserFeatureEmbeddedId(Integer userId, Integer featureId) {
         this.userId = userId;
@@ -33,9 +34,13 @@ public class UserFeatureEmbeddedId implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getFeatureId() { return featureId; }
+    public Integer getFeatureId() {
+        return featureId;
+    }
 
-    public void setFeatureId(Integer featureId) { this.featureId = featureId; }
+    public void setFeatureId(Integer featureId) {
+        this.featureId = featureId;
+    }
 
     public boolean equals(Object o) {
         if (this == o) return true;

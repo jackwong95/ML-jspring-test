@@ -14,15 +14,18 @@ public interface UserDAO {
     List<User> findAll();
 
     List<User> findByFeatureId(Integer featureId);
+
     List<User> findByFeatureName(String featureName);
 
     User findById(Integer id) throws EmptyResultDataAccessException;
+
     User findByEmail(String email) throws EmptyResultDataAccessException;
 
     // TODO: verify all the possible exceptions thrown
     void insertUser(User user) throws InvalidUserException, DuplicateKeyException;
 
     void setTemplate(JdbcTemplate template);
+
     void setDataSource(DataSource dataSource);
 
 }

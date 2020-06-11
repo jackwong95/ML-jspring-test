@@ -15,15 +15,18 @@ public interface FeatureDAO {
 
     // a user may have multiple or more features
     List<Feature> findByUserId(Integer userId);
+
     List<Feature> findByUserEmail(String email);
 
     // a feature can only have one id and one name
     Feature findById(Integer id) throws EmptyResultDataAccessException;
+
     Feature findByName(String name) throws EmptyResultDataAccessException;
 
     void insertFeature(Feature feature) throws InvalidFeatureException, DuplicateKeyException;
 
     void setTemplate(JdbcTemplate template);
+
     void setDataSource(DataSource dataSource);
 
 }

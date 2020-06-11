@@ -40,16 +40,16 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findById(Integer id) throws EmptyResultDataAccessException {
-        String sql="SELECT u_id, email FROM User WHERE u_id = ?";
-        Map<String,Object> result = template.queryForMap(sql, id);
-        return new User((int)result.get("U_ID"), (String)result.get("EMAIL"));
+        String sql = "SELECT u_id, email FROM User WHERE u_id = ?";
+        Map<String, Object> result = template.queryForMap(sql, id);
+        return new User((int) result.get("U_ID"), (String) result.get("EMAIL"));
     }
 
     @Override
-    public User findByEmail(String email) throws EmptyResultDataAccessException  {
-        String sql="SELECT u_id, email FROM User WHERE email = ?";
-        Map<String,Object> result = template.queryForMap(sql, email);
-        return new User((int)result.get("U_ID"), email);
+    public User findByEmail(String email) throws EmptyResultDataAccessException {
+        String sql = "SELECT u_id, email FROM User WHERE email = ?";
+        Map<String, Object> result = template.queryForMap(sql, email);
+        return new User((int) result.get("U_ID"), email);
     }
 
     @Override

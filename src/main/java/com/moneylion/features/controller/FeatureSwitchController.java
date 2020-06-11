@@ -19,7 +19,7 @@ public class FeatureSwitchController {
     FeatureSwitchService featureSwitchService;
 
     @GetMapping(value = "/feature", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> canUserAccessFeature (
+    public ResponseEntity<Object> canUserAccessFeature(
             @RequestParam("email") String email,
             @RequestParam("featureName") String featureName
     ) {
@@ -36,7 +36,7 @@ public class FeatureSwitchController {
     }
 
     @PostMapping(value = "/feature", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> upsertUserAccessFeature (
+    public ResponseEntity<Object> upsertUserAccessFeature(
             @RequestBody Map<String, Object> payload
     ) {
         try {
@@ -44,15 +44,9 @@ public class FeatureSwitchController {
             String featureName = (String) payload.get("featureName");
             Boolean isEnabled = (Boolean) payload.get("enable");
 
-            featureSwitchService.upsertFeature(email, featureName, isEnabled);
+            featureSwitchService.upsertUserAccessFeature(email, featureName, isEnabled);
 
-        } catch (ClassCastException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-        } catch (InvalidUserException e){
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-        } catch (InvalidFeatureException e){
+        } catch (ClassCastException | InvalidUserException | InvalidFeatureException e) {
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
         }

@@ -40,25 +40,25 @@ public class FeatureDAOImpl implements FeatureDAO {
 
     @Override
     public Feature findById(Integer id) throws EmptyResultDataAccessException {
-        String sql="SELECT f_id, name FROM Feature WHERE f_id = ?";
-        Map<String,Object> result = template.queryForMap(sql, id);
-        return new Feature((int)result.get("F_ID"), (String)result.get("NAME"));
+        String sql = "SELECT f_id, name FROM Feature WHERE f_id = ?";
+        Map<String, Object> result = template.queryForMap(sql, id);
+        return new Feature((int) result.get("F_ID"), (String) result.get("NAME"));
     }
 
     @Override
     public Feature findByName(String name) throws EmptyResultDataAccessException {
-        String sql="SELECT f_id, name FROM Feature WHERE name = ?";
-        Map<String,Object> result = template.queryForMap(sql, name);
-        return new Feature((int)result.get("F_ID"), (String)result.get("NAME"));
+        String sql = "SELECT f_id, name FROM Feature WHERE name = ?";
+        Map<String, Object> result = template.queryForMap(sql, name);
+        return new Feature((int) result.get("F_ID"), (String) result.get("NAME"));
     }
 
     @Override
     public List<Feature> findByUserId(Integer userId) {
         String sql = "SELECT f.* FROM UserFeature uf JOIN User u ON uf.u_id = u.u_id JOIN Feature f on uf.f_id = f.f_id WHERE uf.u_id = ?";
         return template.query(sql,
-            new Object[]{userId},
+                new Object[]{userId},
                 (rs, row) -> {
-                    Feature f=new Feature();
+                    Feature f = new Feature();
                     f.setId(rs.getInt(1));
                     f.setName(rs.getString(2));
                     return f;
@@ -71,7 +71,7 @@ public class FeatureDAOImpl implements FeatureDAO {
         return template.query(sql,
                 new Object[]{email},
                 (rs, row) -> {
-                    Feature f=new Feature();
+                    Feature f = new Feature();
                     f.setId(rs.getInt(1));
                     f.setName(rs.getString(2));
                     return f;

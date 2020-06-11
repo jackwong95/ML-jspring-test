@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FeatureSwitchRepositoryUnitTest {
 
     @Test
-    public void featureSwitchRepositoryUnitTests () {
+    public void featureSwitchRepositoryUnitTests() {
         DataSource dataSource = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
                 .addScript("classpath:/schema.sql")
                 .build();
@@ -38,21 +38,21 @@ public class FeatureSwitchRepositoryUnitTest {
         repo.setUserDAO(userDAO);
         repo.setUserFeatureSwitchDAO(userFeatureSwitchDAO);
 
-        repo.upsertFeature("e1", "f1", true);
-        repo.upsertFeature("e1", "f2", false);
-        repo.upsertFeature("e1", "f3", true);
+        repo.upsertUserAccessFeature("e1", "f1", true);
+        repo.upsertUserAccessFeature("e1", "f2", false);
+        repo.upsertUserAccessFeature("e1", "f3", true);
 
-        repo.upsertFeature("e2", "f2", true);
-        repo.upsertFeature("e2", "f3", true);
-        repo.upsertFeature("e2", "f4", false);
+        repo.upsertUserAccessFeature("e2", "f2", true);
+        repo.upsertUserAccessFeature("e2", "f3", true);
+        repo.upsertUserAccessFeature("e2", "f4", false);
 
         // try invalid upserts
         assertThrows(InvalidUserException.class, () ->
-                repo.upsertFeature(null, "f2", true));
+                repo.upsertUserAccessFeature(null, "f2", true));
         assertThrows(InvalidFeatureException.class, () ->
-                repo.upsertFeature("e2", null, true));
+                repo.upsertUserAccessFeature("e2", null, true));
         assertThrows(InvalidUserFeatureSwitchException.class, () ->
-                repo.upsertFeature("e2", "f2", null));
+                repo.upsertUserAccessFeature("e2", "f2", null));
 
         // all the features should match with the above
         assertTrue(repo.canUserAccessFeature("e1", "f1"));
@@ -64,13 +64,13 @@ public class FeatureSwitchRepositoryUnitTest {
         assertFalse(repo.canUserAccessFeature("e2", "f4"));
 
         // try to flip all the features
-        repo.upsertFeature("e1", "f1", false);
-        repo.upsertFeature("e1", "f2", true);
-        repo.upsertFeature("e1", "f3", false);
+        repo.upsertUserAccessFeature("e1", "f1", false);
+        repo.upsertUserAccessFeature("e1", "f2", true);
+        repo.upsertUserAccessFeature("e1", "f3", false);
 
-        repo.upsertFeature("e2", "f2", false);
-        repo.upsertFeature("e2", "f3", false);
-        repo.upsertFeature("e2", "f4", true);
+        repo.upsertUserAccessFeature("e2", "f2", false);
+        repo.upsertUserAccessFeature("e2", "f3", false);
+        repo.upsertUserAccessFeature("e2", "f4", true);
 
         // all the features should match with the above
         assertFalse(repo.canUserAccessFeature("e1", "f1"));

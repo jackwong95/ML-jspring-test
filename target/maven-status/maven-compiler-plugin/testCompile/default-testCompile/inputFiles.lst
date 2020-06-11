@@ -1,4 +1,5 @@
-/home/jack/IdeaProjects/features/src/test/java/com/moneylion/features/dao/UserFeatureSwitchDAOUnitTest.java
-/home/jack/IdeaProjects/features/src/test/java/com/moneylion/features/dao/UserDAOUnitTest.java
-/home/jack/IdeaProjects/features/src/test/java/com/moneylion/features/dao/FeatureDAOUnitTest.java
-/home/jack/IdeaProjects/features/src/test/java/com/moneylion/features/FeaturesApplicationTests.java
+/home/jack/IdeaProjects/ML-jspring-test/src/test/java/com/moneylion/features/FeaturesApplicationTests.java
+/home/jack/IdeaProjects/ML-jspring-test/src/test/java/com/moneylion/features/dao/FeatureDAOUnitTest.java
+/home/jack/IdeaProjects/ML-jspring-test/src/test/java/com/moneylion/features/repository/FeatureSwitchRepositoryUnitTest.java
+/home/jack/IdeaProjects/ML-jspring-test/src/test/java/com/moneylion/features/dao/UserFeatureSwitchDAOUnitTest.java
+/home/jack/IdeaProjects/ML-jspring-test/src/test/java/com/moneylion/features/dao/UserDAOUnitTest.java

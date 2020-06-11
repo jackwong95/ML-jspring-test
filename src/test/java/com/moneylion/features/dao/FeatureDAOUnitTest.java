@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class FeatureDAOUnitTest {
 
     @Test
-    public void featureDAOTests () {
+    public void featureDAOTests() {
         DataSource dataSource = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
                 .addScript("classpath:/schema.sql")
                 .build();

@@ -16,9 +16,10 @@ public class UserFeatureSwitch implements Serializable {
     @Column(name = "enabled", nullable = false)
     private Boolean enabled;
 
-    public UserFeatureSwitch () {}
+    public UserFeatureSwitch() {
+    }
 
-    public UserFeatureSwitch (UserFeatureEmbeddedId id, Boolean enabled){
+    public UserFeatureSwitch(UserFeatureEmbeddedId id, Boolean enabled) {
         this.id = id;
         this.enabled = enabled;
     }
